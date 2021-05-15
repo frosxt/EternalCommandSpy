@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandSpyCmd implements CommandExecutor {
-    private CommandSpy plugin;
+    private final CommandSpy plugin;
 
     public CommandSpyCmd(CommandSpy plugin) {
         this.plugin = plugin;
@@ -18,7 +18,6 @@ public class CommandSpyCmd implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
             Bukkit.getLogger().info("Only players can execute that command!");
-            return false;
         } else {
             Player player = (Player) sender;
             if (args.length == 1) {
@@ -41,5 +40,6 @@ public class CommandSpyCmd implements CommandExecutor {
             }
             return false;
         }
+        return false;
     }
 }
