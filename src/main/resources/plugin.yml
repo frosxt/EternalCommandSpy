@@ -1,0 +1,8 @@
+name: EternalCommandSpy
+version: ${project.version}
+main: me.frost.commandspy.CommandSpy
+authors: [ Frost ]
+description: A simple command spy plugin
+commands:
+  commandspy:
+    aliases: [cspy, ecommandspy, eternalcommandspy, spycommand, socialspy, cmdspy, ecmdspy, eternalcmdspy]

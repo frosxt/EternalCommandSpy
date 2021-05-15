@@ -1,0 +1,8 @@
+# The message shown to a player if they do not have permission for the command specified
+no-permission: "&c&l(!) &cYou do not have permission to execute that command!"
+# The message shown to a player when he or she enables CommandSpy
+commandspy-enabled: "&a&l(!) &aCommandSpy successfully enabled!"
+# The message shown to a player when he or she disables CommandSpy
+commandspy-disabled: "&c&l(!) &cCommandSpy successfully disabled!"
+# The message shown to a player when someone types a command and they have CommandSpy enabled
+commandspy-format: '&e&l(COMMAND SPY) &e%player%: &f%command%'
