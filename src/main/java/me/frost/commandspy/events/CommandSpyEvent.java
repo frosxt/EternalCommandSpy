@@ -16,7 +16,7 @@ public class CommandSpyEvent implements Listener {
 
     @EventHandler
     public void onCommand(PlayerCommandPreprocessEvent event) {
-        Bukkit.getServer().getOnlinePlayers().stream().filter(player -> plugin.commandSpy.contains(player.getUniqueId()))
+        Bukkit.getServer().getOnlinePlayers().stream().filter(player -> plugin.commandSpy.contains(player.getUniqueId()) && player.hasPermission("ecommandspy.use"))
                 .forEach(player -> player.sendMessage(Formatting.colorize(plugin.getConfig().getString("commandspy-format")
                 .replace("%player%", event.getPlayer().getName()).replace("%command%", event.getMessage()))));
     }
