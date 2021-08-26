@@ -1,6 +1,7 @@
 package me.frost.commandspy.cmds;
 
 import me.frost.commandspy.CommandSpy;
+import me.frost.commandspy.managers.CommandSpyManager;
 import me.frost.commandspy.utils.Formatting;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -10,9 +11,12 @@ import org.bukkit.entity.Player;
 
 public class CommandSpyCmd implements CommandExecutor {
     private final CommandSpy plugin;
+    private final CommandSpyManager manager;
 
-    public CommandSpyCmd(CommandSpy plugin) {
+    public CommandSpyCmd(CommandSpy plugin, CommandSpyManager manager) {
         this.plugin = plugin;
+        this.manager = manager;
+        plugin.getCommand("commandspy").setExecutor(this);
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -32,11 +36,11 @@ public class CommandSpyCmd implements CommandExecutor {
             }
             return false;
         }
-        if (plugin.commandSpy.contains(player.getUniqueId())) {
-            plugin.commandSpy.remove(player.getUniqueId());
+        if (manager.isToggled(player)) {
+            manager.removePlayer(player);
             sender.sendMessage(Formatting.colorize(plugin.getConfig().getString("commandspy-disabled")));
         } else {
-            plugin.commandSpy.add(player.getUniqueId());
+            manager.addPlayer(player);
             sender.sendMessage(Formatting.colorize(plugin.getConfig().getString("commandspy-enabled")));
         }
         return false;
